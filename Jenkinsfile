@@ -4,6 +4,7 @@ pipeline {
     environment {
         IMAGE = 'yarishawn/employee-portal:latest'
         ANSIBLE_DIR = '/home/ubuntu/employee-portal-ansible'
+        ANSIBLE_PRIVATE_KEY_FILE = '/var/lib/jenkins/.ssh/id_ed25519'
     }
 
     stages {
