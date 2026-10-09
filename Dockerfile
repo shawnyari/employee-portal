@@ -1,5 +1,12 @@
-FROM nginx:alpine
+FROM python:3.11-slim
 
-COPY index.html /usr/share/nginx/html/index.html
+WORKDIR /app
 
-EXPOSE 80
+RUN pip install --no-cache-dir flask psycopg2-binary gunicorn
+
+COPY app.py .
+COPY index.html .
+
+EXPOSE 5000
+
+CMD ["gunicorn", "--bind", "0.0.0.0:5000", "app:app"]
